@@ -2,7 +2,7 @@
 
 This is a very minimal plugin that post-processes frontend assets,
 enabling you to use the latest ES features
-with less worries about cross-browser compatibility.
+with fewer worries about cross-browser compatibility.
 
 This plugin depends on Node/NPM and currently uses Babel.
 
