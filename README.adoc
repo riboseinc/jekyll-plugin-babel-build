@@ -30,7 +30,7 @@ This plugin requires Node & NPM to be available in Jekyll build environment.
 == Setting up
 
 A quick way to use this plugin with a new site is to use
-the https://github.com/riboseinc/[jekyll-site-skeleton] template.
+the https://github.com/riboseinc/jekyll-site-skeleton[Jekyll site] template.
 
 Alternatively, to add this plugin to an existing site,
 create the following files in your site root,
