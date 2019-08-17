@@ -81,5 +81,5 @@ The plugin will take effect if you run `jekyll serve` as usual.
 Just make sure that Node/NPM are available in your environment,
 and call `npm install` before building the site.
 
-See `.travis.yml` in https://github.com/riboseinc/[jekyll-site-skeleton]
+See `.travis.yml` in https://github.com/riboseinc/jekyll-site-skeleton
 for an example.
