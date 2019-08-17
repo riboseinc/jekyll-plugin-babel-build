@@ -1,0 +1,85 @@
+= Jekyll frontend build plugin
+
+This is a very plugin that post-processes frontend assets,
+enabling you to use the latest ES features
+with less worries about cross-browser compatibility.
+
+This plugin depends on Node/NPM and currently uses Babel.
+
+The plugin uses the “assets” directory in site source as input,
+and `_site/assets` as output.
+
+Current limitations:
+
+* As of now, it only processes JavaScript files under `assets/js` with Babel.
+* The output & source directories are hard-coded;
+  if your site output directory is not `_site` this won’t work.
+
+Roadmap:
+
+* Post-process the CSS with at least auto-prefixer
+* Combine front-end assets into a few packages (bulk of JS, bulk of CSS) and minify it
+* Glean site destination directory from configuration
+* Make source asset directory (directories) configurable
+* (?) Use Web components, e.g. Polymer
+
+== Requirements
+
+This plugin requires Node & NPM to be available in Jekyll build environment.
+
+== Setting up
+
+A quick way to use this plugin with a new site is to use
+the https://github.com/riboseinc/[jekyll-site-skeleton] template.
+
+Alternatively, to add this plugin to an existing site,
+create the following files in your site root,
+and run `npm install` afterwards:
+
+.package.json
+[source,json]
+----
+{
+  "version": "1.0.0",
+  "main": "babel.config.js",
+  "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5"
+  }
+}
+----
+
+.babel.config.js
+[source,javascript]
+----
+const presets = [
+  [
+    "@babel/env",
+    {
+      targets: {
+        ie: "10",
+        edge: "17",
+        firefox: "60",
+        chrome: "67",
+        safari: "11.1",
+      },
+    },
+  ],
+];
+
+module.exports = { presets };
+----
+
+== Using during development
+
+The plugin will take effect if you run `jekyll serve` as usual.
+
+== Using in production/CI
+
+Just make sure that Node/NPM are available in your environment,
+and call `npm install` before building the site.
+
+See `.travis.yml` in https://github.com/riboseinc/[jekyll-site-skeleton]
+for an example.
