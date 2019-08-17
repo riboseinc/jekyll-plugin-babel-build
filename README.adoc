@@ -1,6 +1,6 @@
 = Jekyll frontend build plugin
 
-This is a very plugin that post-processes frontend assets,
+This is a very minimal plugin that post-processes frontend assets,
 enabling you to use the latest ES features
 with less worries about cross-browser compatibility.
 
