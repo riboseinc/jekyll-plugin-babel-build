@@ -19,8 +19,8 @@ Caveats:
 
 Roadmap:
 
-* Post-process the CSS with at least auto-prefixer (https://github.com/riboseinc/jekyll-plugin-frontend-build/issues/2)
-* Combine front-end assets into a few packages (bulk of JS, bulk of CSS) and minify it (https://github.com/riboseinc/jekyll-plugin-frontend-build/issues/3)
+* Post-process the CSS with at least auto-prefixer (https://github.com/riboseinc/jekyll-plugin-frontend-build/issues/2[#2])
+* Combine front-end assets into a few packages (bulk of JS, bulk of CSS) and minify it (https://github.com/riboseinc/jekyll-plugin-frontend-build/issues/3[#3])
 * Make source asset directory (directories) configurable
 * (?) Use Web components, e.g. Polymer
 
