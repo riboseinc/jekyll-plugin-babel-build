@@ -1,7 +1,10 @@
 Jekyll::Hooks.register :site, :post_write do |site|
-  run_frontend_build()
+  build_js()
 end
 
-def run_frontend_build()
-  system('./node_modules/.bin/babel assets/js --out-dir _site/assets/js')
+def build_js()
+
+  # Transpile JS assets
+  system('./node_modules/.bin/babel _site/assets/js --out-dir _site/assets/js')
+
 end
