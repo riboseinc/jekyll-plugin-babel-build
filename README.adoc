@@ -12,8 +12,12 @@ and `_site/assets` as output.
 Current limitations:
 
 * As of now, it only processes JavaScript files under `assets/js` with Babel.
+
+Caveats:
+
 * The output & source directories are hard-coded;
   if your site output directory is not `_site` this won’t work.
+* You may need to include Babel’s polyfill script explicitly.
 
 Roadmap:
 
