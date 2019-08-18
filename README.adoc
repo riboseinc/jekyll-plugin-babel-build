@@ -87,3 +87,25 @@ and call `npm install` before building the site.
 
 See `.travis.yml` in https://github.com/riboseinc/jekyll-site-skeleton
 for an example.
+
+== Troubleshooting
+
+=== `ReferenceError: regeneratorRuntime is not defined`
+
+You may need to include Babel polyfills before your code. Example ways of doing this:
+
+* If you’re getting this error in normal browser window context
+
+  [source,html]
+  ----
+  <script src="/assets/js/babel-polyfill.js"></script>
+  ----
+
+* If you’re getting this error in Web worker context
+
+  [source,javascript]
+  ----
+  importScripts('/assets/js/babel-polyfill.js');
+
+  // The rest of the code
+  ----
