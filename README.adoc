@@ -92,16 +92,19 @@ for an example.
 
 === `ReferenceError: regeneratorRuntime is not defined`
 
-You may need to include Babel polyfills before your code. Example ways of doing this:
+You may need to include Babel polyfills before your code.
 
-* If you’re getting this error in normal browser window context
+The plugin copies the pollyfill under `_site/assets/js`,
+so including it isn’t difficult.
+
+* If you’re getting this error in normal browser window context:
 +
 [source,html]
 ----
 <script src="/assets/js/babel-polyfill.js"></script>
 ----
 
-* If you’re getting this error in Web worker context
+* If you’re getting this error in Web worker context:
 +
 [source,javascript]
 ----
