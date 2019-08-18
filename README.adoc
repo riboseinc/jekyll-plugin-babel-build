@@ -15,15 +15,12 @@ Current limitations:
 
 Caveats:
 
-* The output & source directories are hard-coded;
-  if your site output directory is not `_site` this won’t work.
 * You may need to include Babel’s polyfill script explicitly.
 
 Roadmap:
 
 * Post-process the CSS with at least auto-prefixer
 * Combine front-end assets into a few packages (bulk of JS, bulk of CSS) and minify it
-* Glean site destination directory from configuration
 * Make source asset directory (directories) configurable
 * (?) Use Web components, e.g. Polymer
 
