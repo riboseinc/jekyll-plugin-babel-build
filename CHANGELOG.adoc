@@ -1,0 +1,8 @@
+= Changelog
+
+== 0.0.2
+
+Now copying Babel polyfills into `/assets/js` for easy inclusion
+in cases where things like `regeneratorRuntime` are used.
+Added link:https://github.com/riboseinc/jekyll-plugin-frontend-build#referenceerror-regeneratorruntime-is-not-defined[relevant entry]
+under Troubleshooting.
