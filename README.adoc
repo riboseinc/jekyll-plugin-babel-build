@@ -19,8 +19,8 @@ Caveats:
 
 Roadmap:
 
-* Post-process the CSS with at least auto-prefixer
-* Combine front-end assets into a few packages (bulk of JS, bulk of CSS) and minify it
+* Post-process the CSS with at least auto-prefixer (#2)
+* Combine front-end assets into a few packages (bulk of JS, bulk of CSS) and minify it (#3)
 * Make source asset directory (directories) configurable
 * (?) Use Web components, e.g. Polymer
 
