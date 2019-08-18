@@ -95,17 +95,17 @@ for an example.
 You may need to include Babel polyfills before your code. Example ways of doing this:
 
 * If you’re getting this error in normal browser window context
-
-  [source,html]
-  ----
-  <script src="/assets/js/babel-polyfill.js"></script>
-  ----
++
+[source,html]
+----
+<script src="/assets/js/babel-polyfill.js"></script>
+----
 
 * If you’re getting this error in Web worker context
++
+[source,javascript]
+----
+importScripts('/assets/js/babel-polyfill.js');
 
-  [source,javascript]
-  ----
-  importScripts('/assets/js/babel-polyfill.js');
-
-  // The rest of the code
-  ----
+// The rest of the code
+----
