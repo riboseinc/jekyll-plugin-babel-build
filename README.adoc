@@ -6,8 +6,8 @@ with fewer worries about cross-browser compatibility.
 
 This plugin depends on Node/NPM and currently uses Babel.
 
-The plugin uses the “assets” directory in site source as input,
-and `_site/assets` as output.
+The plugin uses the “assets” directory in site destination (or `_site`) as input,
+and the same directory as output.
 
 Current limitations:
 
@@ -42,7 +42,6 @@ and run `npm install` afterwards:
 ----
 {
   "version": "1.0.0",
-  "main": "babel.config.js",
   "dependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",

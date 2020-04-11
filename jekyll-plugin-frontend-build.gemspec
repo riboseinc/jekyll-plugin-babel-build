@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name          = 'jekyll-plugin-frontend-build'
-  s.version       = '0.0.2'
+  s.version       = '0.1.0'
   s.authors       = ['Ribose Inc.']
   s.email         = ['open.source@ribose.com']
 
