@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require_relative "lib/jekyll/frontend_builder/version"
+
 Gem::Specification.new do |s|
   s.name          = "jekyll-plugin-frontend-build"
-  s.version       = "0.0.3"
+  s.version       = Jekyll::FrontendBuilder::VERSION
   s.authors       = ["Ribose Inc."]
   s.email         = ["open.source@ribose.com"]
 

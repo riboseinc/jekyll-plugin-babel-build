@@ -1,4 +1,1 @@
-module Jekyll
-  module PluginFrontendBuild
-  end
-end
+require_relative "jekyll/frontend_builder"
