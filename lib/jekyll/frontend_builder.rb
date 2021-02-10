@@ -3,6 +3,7 @@
 # (c) Copyright 2021 Ribose Inc.
 #
 
+require_relative "frontend_builder/processor"
 require_relative "frontend_builder/version"
 
 module Jekyll
