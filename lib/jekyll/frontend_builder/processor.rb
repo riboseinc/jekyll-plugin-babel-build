@@ -44,9 +44,16 @@ module Jekyll
       # Runs Babel and transpiles site's JavaScript
       def transpile_site
         Jekyll.logger.debug("Frontend Builder:", "Transpiling JavaScript")
-        Dir.chdir npm_dir do
-          system BABEL_EXE_PATH, site_js_dir, "--out-dir", site_js_dir
-        end
+        Jekyll.logger.debug("Frontend Builder:",
+          "Using Babel config from #{babel_config_path.inspect}")
+
+        exe_path = File.expand_path(BABEL_EXE_PATH, npm_dir)
+        options = {
+          "--out-dir" => site_js_dir,
+          "--config-file" => babel_config_path,
+        }
+
+        system exe_path, site_js_dir, *options.compact.flatten
       end
 
       # Path where NPM packages are supposed to be installed
@@ -74,6 +81,15 @@ module Jekyll
 
       def gem_root_dir
         File.expand_path("../../..", __dir__)
+      end
+
+      def config
+        site.config["frontend_builder"] || {}.freeze
+      end
+
+      def babel_config_path
+        path = config["babel_config_path"]
+        path && File.expand_path(path, site.source)
       end
     end
   end
