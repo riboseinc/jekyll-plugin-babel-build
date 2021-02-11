@@ -16,7 +16,7 @@ module Jekyll
       end
 
       def process_site
-        Jekyll.logger.info("Frontend Builder:", "Post-processing site")
+        log(:info, "Post-processing site")
 
         install_packages
         add_polyfills_to_site
@@ -25,7 +25,7 @@ module Jekyll
 
       # Installs required NPM packages.
       def install_packages
-        Jekyll.logger.debug("Frontend Builder:", "Installing NPM packages")
+        log(:debug, "Installing NPM packages")
         prepare_npm_dir
 
         Dir.chdir npm_dir do
@@ -35,7 +35,7 @@ module Jekyll
 
       # Copies Babel polyfills to site.
       def add_polyfills_to_site
-        Jekyll.logger.debug("Frontend Builder:", "Copying polyfills")
+        log(:debug, "Copying polyfills")
         poly_src = File.expand_path(BABEL_POLYFILL_PATH, npm_dir)
         poly_dest = File.expand_path("babel-polyfill.js", site_js_dir)
         FileUtils.cp(poly_src, poly_dest)
@@ -43,9 +43,8 @@ module Jekyll
 
       # Runs Babel and transpiles site's JavaScript
       def transpile_site
-        Jekyll.logger.debug("Frontend Builder:", "Transpiling JavaScript")
-        Jekyll.logger.debug("Frontend Builder:",
-          "Using Babel config from #{babel_config_path.inspect}")
+        log(:debug, "Transpiling JavaScript")
+        log(:debug, "Using Babel config from #{babel_config_path.inspect}")
 
         exe_path = File.expand_path(BABEL_EXE_PATH, npm_dir)
         options = {
@@ -90,6 +89,10 @@ module Jekyll
       def babel_config_path
         path = config["babel_config_path"]
         path && File.expand_path(path, site.source)
+      end
+
+      def log(level, message)
+        Jekyll.logger.public_send level, "Frontend Builder:", message
       end
     end
   end
