@@ -64,7 +64,8 @@ module Jekyll
       # Path to site's JavaScript assets
       # (typically +_site/assets/js+).
       def site_js_dir
-        File.expand_path("./assets/js", site.dest)
+        path = config.fetch("javascripts_path", "./assets/js")
+        File.expand_path(path, site.dest)
       end
 
       private
