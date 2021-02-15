@@ -6,13 +6,6 @@ with fewer worries about cross-browser compatibility.
 
 This plugin depends on Node/NPM and currently uses Babel.
 
-The plugin uses the “assets” directory in site source as input,
-and `_site/assets` as output.
-
-Current limitations:
-
-* As of now, it only processes JavaScript files under `assets/js` with Babel.
-
 Caveats:
 
 * You may need to include Babel’s polyfill script explicitly.
@@ -21,36 +14,59 @@ Roadmap:
 
 * Post-process the CSS with at least auto-prefixer (https://github.com/riboseinc/jekyll-plugin-frontend-build/issues/2[#2])
 * Combine front-end assets into a few packages (bulk of JS, bulk of CSS) and minify it (https://github.com/riboseinc/jekyll-plugin-frontend-build/issues/3[#3])
-* Make source asset directory (directories) configurable
 * (?) Use Web components, e.g. Polymer
 
-== Requirements
+== Usage instructions
+
+=== Requirements
 
 This plugin requires Node & NPM to be available in Jekyll build environment.
 
-== Setting up
+=== Installation
 
-A quick way to use this plugin with a new site is to use
-the https://github.com/riboseinc/jekyll-site-skeleton[Jekyll site] template.
+It's probably the easiest to add following to the `Gemfile`, so that Jekyll will
+pick this plugin up automatically:
 
-Alternatively, to add this plugin to an existing site,
-create the following files in your site root,
-and run `npm install` afterwards:
-
-.package.json
-[source,json]
 ----
-{
-  "version": "1.0.0",
-  "main": "babel.config.js",
-  "dependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.5.5"
-  }
-}
+group :jekyll_plugins do
+  gem "jekyll-plugin-frontend-build"
+end
 ----
+
+For other options, read https://jekyllrb.com/docs/plugins/installation/[
+Jekyll documentation].
+
+=== Configuration options
+
+You can customize plugin's behaviour in site's `_config.yml`,
+in `frontend_builder` section.  Following options are supported:
+
+`babel_config_path`::
+  Path to Babel configuration file (see section below), relative to site's
+  source directory (typically project root).  When unset, a pre-defined
+  configuration is used.  By default it is unset.
+
+`javascripts_path`::
+  Path to directory which contains JavaScript files to be processed, relative to
+  site's source directory (typically project root).  Defaults to `./assets/js`.
+
+Example:
+
+._config.yml
+[source,yaml]
+----
+frontend_builder:
+  babel_config_path: babel.config.js
+  javascripts_path: assets/javascript
+----
+
+=== Providing custom Babel configuration
+
+Usually you'll want to do that.
+
+Just save following listing as `.babel.config.js`, update it according to your
+needs, and set `frontend_builder` -> `babel_config_path` in `_config.yml` to
+path to that file.
 
 .babel.config.js
 [source,javascript]
@@ -73,19 +89,12 @@ const presets = [
 module.exports = { presets };
 ----
 
-== Using during development
+If you want to learn more about Babel configuration files, read on:
 
-The plugin will take effect if you run `jekyll serve` as usual.
+- https://babeljs.io/docs/en/usage
+- https://babeljs.io/docs/en/babel-preset-env
 
-== Using in production/CI
-
-Just make sure that Node/NPM are available in your environment,
-and call `npm install` before building the site.
-
-See `.travis.yml` in https://github.com/riboseinc/jekyll-site-skeleton
-for an example.
-
-== Including Babel polyfill
+=== Including Babel polyfill
 
 For certain functionality, Babel requires a polyfill script to be executed
 before your code.
@@ -93,15 +102,15 @@ before your code.
 The plugin copies the pollyfill under `_site/assets/js`,
 so including it isn’t difficult.
 
-* To include Babel polyfill in normal browser window context:
-+
+To include Babel polyfill in normal browser window context:
+
 [source,html]
 ----
 <script src="/assets/js/babel-polyfill.js"></script>
 ----
 
-* To include Babel polyfill in Web worker context:
-+
+To include Babel polyfill in Web worker context:
+
 [source,javascript]
 ----
 importScripts('/assets/js/babel-polyfill.js');
@@ -110,6 +119,11 @@ importScripts('/assets/js/babel-polyfill.js');
 ----
 
 == Troubleshooting
+
+=== Verbose output
+
+When `jekyll build` is run with `--verbose` option, this plugin prints more
+details, which may help in diagnosing what went wrong.
 
 === `ReferenceError: regeneratorRuntime is not defined`
 
@@ -124,3 +138,12 @@ This might happen in browser window context.
 
 Solution: include Babel polyfill before your code
 (see the Including Babel polyfill section).
+
+== Credits
+
+This gem is developed, maintained and funded by {ribose}[Ribose Inc.]
+
+== License
+
+The gem is available as open source under the terms of the
+https://opensource.org/licenses/MIT[MIT License].
