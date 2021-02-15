@@ -1,0 +1,10 @@
+{
+  "name": "jekyll-plugin-frontend-build",
+  "main": "babel.config.js",
+  "dependencies": {
+    "@babel/cli": "^7.12.0",
+    "@babel/core": "^7.12.0",
+    "@babel/polyfill": "^7.12.0",
+    "@babel/preset-env": "^7.12.0"
+  }
+}
